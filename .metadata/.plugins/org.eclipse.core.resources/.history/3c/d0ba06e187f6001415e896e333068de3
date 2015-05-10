@@ -1,0 +1,44 @@
+/**
+ * 
+ */
+package huffman;
+
+/**
+ * @author Kevin Callahan
+ *
+ */
+public class CanonicalHuff implements Comparable<CanonicalHuff> {
+
+	String symbol = "";
+	int len = 0;
+	//TYPE code = null;
+	
+	public CanonicalHuff(String name, int len){
+		this.symbol = name;
+		this.len = len;
+	}
+
+	/**
+	 * @param o the CanonicalHuff to be compared.
+	 * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object. 
+	 */
+	@Override
+	public int compareTo(CanonicalHuff o) {
+		if(this.len-o.len == 0){
+			//Same length, so compare lexigraphically
+			if(this.symbol.compareTo(o.symbol) < 0 ){
+				//this is lexicographically less
+				return -1;
+			} else if(this.symbol.compareTo(o.symbol) > 0){
+				return 1;
+			}
+		} else {
+			//Compare by length
+			return this.len-o.len;
+		}
+			
+		return 0;
+	}
+	
+	
+}

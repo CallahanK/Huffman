@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;map&apos; in &apos;huffman.Encode.getFrequencies(...)&apos; to &apos;freq_map&apos;&#x0D;&#x0A;- Original project: &apos;huffman&apos;&#x0D;&#x0A;- Original element: &apos;huffman.Encode.getFrequencies(String).map&apos;&#x0D;&#x0A;- Renamed element: &apos;map&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;map&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/&lt;huffman{Encode.java[Encode~getFrequencies~QString;@map!366!422!387!389!QMap\&lt;QString;QInteger;&gt;;!0!false" name="freq_map" references="true" stamp="1431189154902" version="1.0"/>
+</session>

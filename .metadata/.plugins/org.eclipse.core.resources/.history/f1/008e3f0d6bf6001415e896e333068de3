@@ -1,0 +1,72 @@
+/**
+ * 
+ */
+package huffman;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author Kevin Callahan
+ *
+ */
+public class Encode {
+
+	/**
+	 * @param args SOURCEFILE TARGETFILE
+	 */
+	public static void main(String[] args) {
+		String srcFileLoc = "\\samples\\text\\sample1.txt";
+
+		//C:\Users\Kevin\Documents\GitHub\Huffman\samples\text
+		
+		try {
+			LineNumberReader in = new LineNumberReader(new FileReader(srcFileLoc));
+			String line = null;
+			
+			
+			while ((line = in.readLine()) != null) {
+
+				
+				System.out.println(line);
+				
+				
+			}
+			
+			
+			in.close();
+		} catch (IOException e) {
+			System.out.println("I/O Error");
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+
+	
+	
+	
+	
+	
+	public Map<String, Integer> getFrequencies(String source, Map<String, Integer> freqMap){
+		
+		//Map<String, Integer> freq_map = new HashMap<String,Integer>();
+			
+		for(int i = 0; i<source.length(); i++){
+			String sub = source.substring(i, i+1);
+			
+			if(freqMap.containsKey(sub)){
+				freqMap.put(sub, freqMap.get(sub)+1 );
+			} else {
+				freqMap.put(sub, 1);
+			}
+		}
+		return freqMap;
+	}
+	
+}

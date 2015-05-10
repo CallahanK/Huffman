@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package huffman;
+
+/**
+ * @author Kevin
+ *
+ */
+public class CanonicalHuff {
+
+	String symbol = "";
+	
+}

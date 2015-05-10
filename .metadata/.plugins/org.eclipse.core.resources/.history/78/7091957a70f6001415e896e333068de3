@@ -1,0 +1,88 @@
+/**
+ * 
+ */
+package huffman;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+/**
+ * @author Kevin Callahan
+ *
+ */
+public class Encode {
+
+	/**
+	 * @param args SOURCEFILE TARGETFILE
+	 */
+	public static void main(String[] args) {
+		String srcFileLoc = "samples\\text\\sample0.txt";
+		Map<String, Integer> freqMap = new HashMap<String,Integer>();
+		
+		
+		
+		try {
+			LineNumberReader in = new LineNumberReader(new FileReader(srcFileLoc));
+			String line = null;
+			
+			while ((line = in.readLine()) != null) {
+				//System.out.println(line);
+				
+				freqMap = getFrequencies(line, freqMap);
+				
+			}
+			
+			
+			in.close();
+		} catch (IOException e) {
+			System.out.println("I/O Error");
+			e.printStackTrace();
+		}
+	
+		System.out.println("Character Frequencies");
+		
+		
+		Queue<HuffNode> nodesRemaining = new PriorityQueue<HuffNode>();
+		for(Entry<String, Integer> element : freqMap.entrySet()){
+			
+			nodesRemaining.add(new HuffNode(element.getKey(),element.getValue()));
+			
+			System.out.println(element.getKey() + "   " + element.getValue()  );
+		}
+		
+		System.out.println("Priority Queue");
+		for(int i = 0; i<=nodesRemaining.size(); i++){
+			HuffNode tmp = nodesRemaining.poll();
+			System.out.println(tmp.symbol + "   " + tmp.freq);
+		}
+		
+	}
+
+	
+	
+	
+	
+	
+	public static Map<String, Integer> getFrequencies(String source, Map<String, Integer> freqMap){
+		
+		//Map<String, Integer> freq_map = new HashMap<String,Integer>();
+			
+		for(int i = 0; i<source.length(); i++){
+			String sub = source.substring(i, i+1);
+			
+			if(freqMap.containsKey(sub)){
+				freqMap.put(sub, freqMap.get(sub)+1 );
+			} else {
+				freqMap.put(sub, 1);
+			}
+		}
+		return freqMap;
+	}
+	
+}
